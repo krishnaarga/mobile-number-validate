@@ -1,6 +1,6 @@
 {
   "name": "mobile-number-validator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mobile number validation package",
   "main": "index.js",
   "browser": "dist/mobile-validator.min.js",
@@ -11,7 +11,11 @@
   "scripts": {
     "build": "rollup -c"
   },
-  "keywords": ["mobile", "phone", "validation"],
+  "keywords": [
+    "mobile",
+    "phone",
+    "validation"
+  ],
   "author": "Krishna Kanhaiya",
   "license": "MIT",
   "dependencies": {
