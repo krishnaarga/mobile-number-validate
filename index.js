@@ -6,43 +6,48 @@ class MobileValidator {
   }
 
   init() {
-    document.addEventListener('DOMContentLoaded', () => {
-      const inputs = document.querySelectorAll('.mobile-validate');
-      inputs.forEach(input => {
-        input.addEventListener('blur', this.validate.bind(this));
+    if (typeof document !== 'undefined') {
+      document.addEventListener('DOMContentLoaded', () => {
+        const inputs = document.querySelectorAll('.mobile-validate');
+        inputs.forEach(input => {
+          input.addEventListener('blur', this.validate.bind(this));
+        });
       });
-    });
+    }
   }
 
   validate(event) {
     const input = event.target;
     const number = input.value;
-    const country = input.dataset.country || 'US'; // Default to US if not specified
+    const country = 'IN'; // Set default country to India
 
     try {
       const phoneNumber = parsePhoneNumber(number, country);
-      if (isValidPhoneNumber(number, country) && phoneNumber.getType() === 'MOBILE') {
+      if (isValidPhoneNumber(number, country) && phoneNumber.getType() === 'MOBILE' && this.isIndianMobileNumber(number)) {
         input.setCustomValidity('');
         input.classList.remove('invalid');
         input.classList.add('valid');
       } else {
-        throw new Error('Invalid mobile number');
+        throw new Error('Invalid Indian mobile number');
       }
     } catch (error) {
-      input.setCustomValidity('Invalid mobile number');
+      input.setCustomValidity('Invalid Indian mobile number');
       input.classList.remove('valid');
       input.classList.add('invalid');
     }
   }
+
+  isIndianMobileNumber(number) {
+    // Indian mobile numbers typically start with 6, 7, 8, or 9 and have 10 digits
+    const indianMobileRegex = /^[6-9]\d{9}$/;
+    return indianMobileRegex.test(number.replace(/\D/g, ''));
+  }
 }
 
-// Export the class for Node.js environments
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = MobileValidator;
 }
 
-// Make the class available globally for browser environments
 if (typeof window !== 'undefined') {
   window.MobileValidator = MobileValidator;
 }
-
