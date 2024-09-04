@@ -1,0 +1,27 @@
+{
+  "name": "mobile-number-validator",
+  "version": "1.0.0",
+  "description": "Mobile number validation package",
+  "main": "index.js",
+  "browser": "dist/mobile-validator.min.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": ["mobile", "phone", "validation"],
+  "author": "Krishna Kanhaiya",
+  "license": "MIT",
+  "dependencies": {
+    "libphonenumber-js": "^1.11.7"
+  },
+  "devDependencies": {
+    "rollup": "^4.21.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krishnaarga/mobile-number-validator.git"
+  }
+}
