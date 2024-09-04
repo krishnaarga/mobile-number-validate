@@ -1,5 +1,5 @@
 {
-  "name": "mobile-number-validator",
+  "name": "mobile-number-validate",
   "version": "1.0.1",
   "description": "Mobile number validation package",
   "main": "index.js",
